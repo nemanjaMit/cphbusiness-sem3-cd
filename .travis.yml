@@ -24,3 +24,14 @@ before_install:
 script:
   - npm run lint:js
   - npm test
+
+skip_cleanup: true
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  local-dir: dist
+  on:
+    branch: master
